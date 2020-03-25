@@ -16,10 +16,7 @@ try {
 } catch (\PDOException $e) {
     throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
-
-$dataSeries = $pdo->prepare('SELECT *
-        FROM netland.series 
-        WHERE id = :id');
+$dataSeries = $pdo->prepare('SELECT * FROM netland.series WHERE id = :id');
 $dataSeries->execute(array(':id' => $_GET['id']));
 $dataSeries = $dataSeries->fetchAll();
 
